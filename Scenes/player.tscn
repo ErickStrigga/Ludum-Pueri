@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dh31pkr4akyes"]
+
+[ext_resource type="Script" uid="uid://fjuv8pw44qbv" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://h0sxmfhtgrty" path="res://Assets/test tileset.png" id="2_6t5aa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjndj"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjndj"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(2, 2, 12, 12)
+
+[node name="player" type="CharacterBody2D" unique_id=1973542359]
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811313710]
+shape = SubResource("CapsuleShape2D_bjndj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1147668876]
+position = Vector2(0, 1)
+texture = SubResource("AtlasTexture_bjndj")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1855549867]
