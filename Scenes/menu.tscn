@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://jfj28ghpmcw8"]
+
+[ext_resource type="FontFile" uid="uid://dnsx4ky886vy5" path="res://Fonts/PressStart2P-Regular.ttf" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://xks072qx4ea" path="res://Scripts/menu.gd" id="1_xhh6f"]
+
+[node name="Menu" type="Control" unique_id=962647776]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="Title Container" type="VBoxContainer" parent="." unique_id=2128235603]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_constants/separation = 35
+
+[node name="Title" type="Label" parent="Title Container" unique_id=661671904]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 8
+text = "LUDUM PUERI"
+
+[node name="Buttons Container" type="VBoxContainer" parent="Title Container" unique_id=780286751]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Title Container/Buttons Container" unique_id=2059464092]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 7
+text = "PLAY"
+
+[node name="Options" type="Button" parent="Title Container/Buttons Container" unique_id=1827274205]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 7
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="Title Container/Buttons Container" unique_id=1863774510]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 7
+text = "EXIT"
+
+[connection signal="button_up" from="Title Container/Buttons Container/Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="Title Container/Buttons Container/Options" to="." method="_on_options_button_up"]
+[connection signal="button_up" from="Title Container/Buttons Container/Exit" to="." method="_on_exit_button_up"]
