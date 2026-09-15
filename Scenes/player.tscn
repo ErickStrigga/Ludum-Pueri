@@ -1,24 +1,186 @@
 [gd_scene format=3 uid="uid://dh31pkr4akyes"]
 
 [ext_resource type="Script" uid="uid://fjuv8pw44qbv" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://h0sxmfhtgrty" path="res://Assets/test tileset.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://dv2agvm7meikp" path="res://Assets/CORRER.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://kb25cdyqklrr" path="res://Assets/muelto4.png" id="2_vgqql"]
+[ext_resource type="Texture2D" uid="uid://cafepw86h2pl2" path="res://Assets/gb caminar-sheet-sheet-1.png" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://jd7saoipur2d" path="res://Assets/health.png" id="5_fkybt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjndj"]
 radius = 6.0
 height = 14.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjndj"]
-atlas = ExtResource("2_6t5aa")
-region = Rect2(2, 2, 12, 12)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
+atlas = ExtResource("2_vgqql")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
+atlas = ExtResource("4_fkybt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_opoq5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8erm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ek2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx1dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gymyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu2lt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukyrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dp3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4iuc")
+}],
+"loop": 1,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd4e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqcod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igrcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7ks")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6n3p")
+}],
+"loop": 1,
+"name": &"stand",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjndj"]
+radius = 4.0
 
 [node name="player" type="CharacterBody2D" unique_id=1973542359]
 script = ExtResource("1_cvnsp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811313710]
+[node name="collision box" type="CollisionShape2D" parent="." unique_id=811313710]
 shape = SubResource("CapsuleShape2D_bjndj")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1147668876]
-position = Vector2(0, 1)
-texture = SubResource("AtlasTexture_bjndj")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1855549867]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=690027247]
+sprite_frames = SubResource("SpriteFrames_opoq5")
+animation = &"run"
+frame_progress = 0.499893
+
+[node name="damage" type="Area2D" parent="." unique_id=357773756]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damage" unique_id=1431017280]
+shape = SubResource("CircleShape2D_bjndj")
+
+[node name="invincibility" type="Timer" parent="." unique_id=2134069803]
+wait_time = 2.0
+one_shot = true
+
+[node name="flickering" type="Timer" parent="." unique_id=345740462]
+wait_time = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2038733468]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=880194789]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="health" type="TextureProgressBar" parent="CanvasLayer/Control" unique_id=218347741]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource("5_fkybt")
+
+[connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
+[connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]
+[connection signal="timeout" from="flickering" to="." method="_on_flickering_timeout"]
