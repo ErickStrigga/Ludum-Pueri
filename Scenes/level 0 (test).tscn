@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3kd62fl8ak6m"]
 
 [ext_resource type="TileSet" uid="uid://br8mcyltoibjc" path="res://Assets/base tileset.tres" id="1_0w558"]
-[ext_resource type="PackedScene" uid="uid://cnxlgh2vo2ehq" path="res://Scenes/foes/base_enemy.tscn" id="2_0w558"]
+[ext_resource type="PackedScene" uid="uid://cnxlgh2vo2ehq" path="res://Scenes/foes/userpienteb.tscn" id="2_0w558"]
 
 [node name="TileMap" type="TileMap" unique_id=1012347728]
 tile_set = ExtResource("1_0w558")
