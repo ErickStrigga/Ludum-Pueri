@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cnxlgh2vo2ehq"]
+
+[ext_resource type="Script" uid="uid://chy0iugraesh5" path="res://Scenes/foes/userpienteb.gd" id="1_nl8t5"]
+[ext_resource type="Texture2D" uid="uid://r65ceq085mip" path="res://Assets/USerpienteB.png" id="2_h65ct"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5mes4"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sd73"]
+atlas = ExtResource("2_h65ct")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os7aw"]
+atlas = ExtResource("2_h65ct")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa4ul"]
+atlas = ExtResource("2_h65ct")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ela"]
+atlas = ExtResource("2_h65ct")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjndj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sd73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os7aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa4ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ela")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjndj"]
+radius = 4.0
+
+[node name="userpienteb" type="CharacterBody2D" unique_id=347689460]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_nl8t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=18777314]
+shape = SubResource("CapsuleShape2D_5mes4")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=329466000]
+sprite_frames = SubResource("SpriteFrames_bjndj")
+
+[node name="attack" type="Area2D" parent="." unique_id=344088975]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack" unique_id=1849030217]
+shape = SubResource("CircleShape2D_bjndj")
+debug_color = Color(0.98108655, 0, 0.37815458, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=166268825]
+position = Vector2(12, 0)
+target_position = Vector2(0, 20)
+
+[node name="PARED" type="RayCast2D" parent="." unique_id=1716187139]
+target_position = Vector2(11, 0)
+collision_mask = 2

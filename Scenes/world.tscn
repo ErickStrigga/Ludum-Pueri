@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dyckvy422mo0c"]
 
 [ext_resource type="Script" uid="uid://de57k11fv78mv" path="res://Scripts/world.gd" id="1_a02cp"]
-[ext_resource type="PackedScene" uid="uid://d3kd62fl8ak6m" path="res://Scenes/level 0 (test).tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://dh31pkr4akyes" path="res://Scenes/player.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://0hll7qcjbswi" path="res://Scenes/level_1.tscn" id="3_8j60k"]
 
 [node name="World" type="Node2D" unique_id=1902051695]
 script = ExtResource("1_a02cp")
 
-[node name="TileMap" parent="." unique_id=1012347728 instance=ExtResource("2_go701")]
-position = Vector2(-278, -117)
-
 [node name="player" parent="." unique_id=1973542359 instance=ExtResource("3_5a7ea")]
 position = Vector2(-56, -107)
+
+[node name="level 1" parent="." unique_id=1012347728 instance=ExtResource("3_8j60k")]
+position = Vector2(-93, -34)
