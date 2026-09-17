@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://jfj28ghpmcw8"]
 
-[ext_resource type="FontFile" uid="uid://dnsx4ky886vy5" path="res://Fonts/PressStart2P-Regular.ttf" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://xks072qx4ea" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://nckx5co67f80" path="res://Assets/Menu Bg.png" id="2_jsrd8"]
+[ext_resource type="AudioStream" uid="uid://cnh4dnia66vh5" path="res://Sounds/Menu.wav" id="3_cayip"]
+[ext_resource type="Texture2D" uid="uid://biqv4nx3t8gxo" path="res://Assets/Start button.png" id="3_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://c8to23vrh5aaf" path="res://Assets/Credits button.png" id="4_q3rjx"]
+[ext_resource type="Texture2D" uid="uid://cibbbwede1hm6" path="res://Assets/Start button pressed.png" id="4_rfqti"]
+[ext_resource type="Texture2D" uid="uid://cx537lhfwa804" path="res://Assets/Exit button.png" id="5_6swd7"]
+[ext_resource type="Texture2D" uid="uid://bwfduxx7jd200" path="res://Assets/Start button hovered.png" id="5_g8i7c"]
+[ext_resource type="Texture2D" uid="uid://b77mu5oc1yqdi" path="res://Assets/Exit button pressed.png" id="6_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://bo2hj04d0bl5u" path="res://Assets/Creditst button pressed.png" id="7_23t3j"]
+[ext_resource type="Texture2D" uid="uid://b0e0uebi3eiha" path="res://Assets/Credits button hovered.png" id="8_8ph6h"]
+[ext_resource type="Texture2D" uid="uid://b8vnw8rww2tcg" path="res://Assets/Exit button hovered.png" id="11_rfqti"]
+[ext_resource type="AudioStream" uid="uid://bmgabsm4pejl4" path="res://Sounds/Item.wav" id="13_23t3j"]
 
 [node name="Menu" type="Control" unique_id=962647776]
 layout_mode = 3
@@ -11,6 +22,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xhh6f")
+
+[node name="MenuBg" type="Sprite2D" parent="." unique_id=161161640]
+z_index = -1
+position = Vector2(80, 72)
+texture = ExtResource("2_jsrd8")
 
 [node name="Title Container" type="VBoxContainer" parent="." unique_id=2128235603]
 layout_mode = 1
@@ -24,37 +40,45 @@ offset_bottom = 54.0
 grow_horizontal = 2
 theme_override_constants/separation = 35
 
-[node name="Title" type="Label" parent="Title Container" unique_id=661671904]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
-theme_override_fonts/font = ExtResource("1_1rerr")
-theme_override_font_sizes/font_size = 8
-text = "LUDUM PUERI"
+[node name="Buttons Container" type="VBoxContainer" parent="." unique_id=780286751]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -16.5
+offset_right = 46.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Buttons Container" type="VBoxContainer" parent="Title Container" unique_id=780286751]
+[node name="Start" type="TextureButton" parent="Buttons Container" unique_id=1349282301]
 layout_mode = 2
+texture_normal = ExtResource("3_wbdvm")
+texture_pressed = ExtResource("4_rfqti")
+texture_hover = ExtResource("5_g8i7c")
 
-[node name="Play" type="Button" parent="Title Container/Buttons Container" unique_id=2059464092]
+[node name="Credits" type="TextureButton" parent="Buttons Container" unique_id=286737200]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
-theme_override_fonts/font = ExtResource("1_1rerr")
-theme_override_font_sizes/font_size = 7
-text = "PLAY"
+texture_normal = ExtResource("4_q3rjx")
+texture_pressed = ExtResource("7_23t3j")
+texture_hover = ExtResource("8_8ph6h")
 
-[node name="Options" type="Button" parent="Title Container/Buttons Container" unique_id=1827274205]
+[node name="Exit" type="TextureButton" parent="Buttons Container" unique_id=1841281229]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
-theme_override_fonts/font = ExtResource("1_1rerr")
-theme_override_font_sizes/font_size = 7
-text = "OPTIONS"
+texture_normal = ExtResource("5_6swd7")
+texture_pressed = ExtResource("6_wbdvm")
+texture_hover = ExtResource("11_rfqti")
 
-[node name="Exit" type="Button" parent="Title Container/Buttons Container" unique_id=1863774510]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.05882353, 0.21960784, 0.05882353, 1)
-theme_override_fonts/font = ExtResource("1_1rerr")
-theme_override_font_sizes/font_size = 7
-text = "EXIT"
+[node name="BgSound" type="AudioStreamPlayer" parent="." unique_id=795594652]
+stream = ExtResource("3_cayip")
 
-[connection signal="button_up" from="Title Container/Buttons Container/Play" to="." method="_on_play_button_up"]
-[connection signal="button_up" from="Title Container/Buttons Container/Options" to="." method="_on_options_button_up"]
-[connection signal="button_up" from="Title Container/Buttons Container/Exit" to="." method="_on_exit_button_up"]
+[node name="Click sound" type="AudioStreamPlayer" parent="." unique_id=2119187652]
+stream = ExtResource("13_23t3j")
+pitch_scale = 1.25
+
+[connection signal="pressed" from="Buttons Container/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons Container/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Buttons Container/Exit" to="." method="_on_exit_pressed"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://br8mcyltoibjc" path="res://Assets/base tileset.tres" id="1_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://cnxlgh2vo2ehq" path="res://Scenes/foes/userpienteb.tscn" id="2_7p6j4"]
+[ext_resource type="PackedScene" uid="uid://dh31pkr4akyes" path="res://Scenes/player.tscn" id="3_7p6j4"]
+[ext_resource type="AudioStream" uid="uid://cn3nkpxdlkkur" path="res://Sounds/Game.wav" id="3_xfk5q"]
 
 [node name="level 1" type="TileMap" unique_id=1012347728]
 tile_set = ExtResource("1_xfk5q")
@@ -43,3 +45,10 @@ position = Vector2(78, 123)
 
 [node name="userpienteb12" parent="." unique_id=732355170 instance=ExtResource("2_7p6j4")]
 position = Vector2(744, 32)
+
+[node name="player" parent="." unique_id=1973542359 instance=ExtResource("3_7p6j4")]
+position = Vector2(744, 32)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2137273529]
+stream = ExtResource("3_xfk5q")
+autoplay = true
