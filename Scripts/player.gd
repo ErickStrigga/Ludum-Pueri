@@ -25,9 +25,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor():
+		if velocity.y <= 0:
+			animation.play("jump")
+		else:
+			animation.play("falling")
 		velocity += get_gravity() * delta
-
-
 
 	if(state != "hit"):
 		
@@ -54,8 +56,6 @@ func _physics_process(delta: float) -> void:
 			state = "stand"
 
 	move_and_slide()
-
-
 
 #jump back when damaged
 func _jump_away():

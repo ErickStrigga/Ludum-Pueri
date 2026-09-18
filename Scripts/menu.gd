@@ -28,3 +28,6 @@ func _on_exit_pressed() -> void:
 	click_sound.play()
 	await  get_tree().create_timer(0.3).timeout
 	get_tree().quit()
+
+func _on_bg_sound_finished() -> void:
+	bg_sound.play()

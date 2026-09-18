@@ -82,3 +82,4 @@ pitch_scale = 1.25
 [connection signal="pressed" from="Buttons Container/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons Container/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Buttons Container/Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="BgSound" to="." method="_on_bg_sound_finished"]
