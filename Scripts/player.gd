@@ -5,10 +5,11 @@ extends CharacterBody2D
 @onready var invincibility_timer = $invincibility
 @onready var flickering_timer = $flickering #para el efecto de parpadeo de la invencibilidad
 @onready var healthbar = $CanvasLayer/Control/health
+@onready var click_sound = $Click
 
 var state = "stand"
 const SPEED = 150
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -350.0
 var health = 5:
 	set(value):
 		healthbar.value = value
@@ -25,10 +26,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor():
-		if velocity.y <= 0:
-			animation.play("jump")
-		else:
-			animation.play("falling")
+		animation.play("jump")
 		velocity += get_gravity() * delta
 
 	if(state != "hit"):
@@ -36,6 +34,7 @@ func _physics_process(delta: float) -> void:
 		# Handle jump.
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			$Jump.play()
 
 
 		#handle movement
@@ -93,3 +92,9 @@ func _on_flickering_timeout() -> void:
 	animation.visible = not animation.visible
 	if state == "hit":
 		state = "stand"
+
+
+func _on_main_menu_pressed() -> void:
+	click_sound.play()
+	await  get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

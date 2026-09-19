@@ -1,12 +1,16 @@
 [gd_scene format=3 uid="uid://dh31pkr4akyes"]
 
 [ext_resource type="Script" uid="uid://fjuv8pw44qbv" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://dv2agvm7meikp" path="res://Assets/CORRER.png" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://kb25cdyqklrr" path="res://Assets/muelto4.png" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://bditve6y8ahb5" path="res://Assets/Falling.png" id="3_3smsa"]
 [ext_resource type="Texture2D" uid="uid://b54h4u0mhoilp" path="res://Assets/JUMP.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://cafepw86h2pl2" path="res://Assets/gb caminar-sheet-sheet-1.png" id="4_fkybt"]
 [ext_resource type="Texture2D" uid="uid://jd7saoipur2d" path="res://Assets/health.png" id="5_fkybt"]
+[ext_resource type="Texture2D" uid="uid://bn5ljxfprre4i" path="res://Assets/MainMenuButton.png" id="7_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://dahotn8rcjf2l" path="res://Sounds/Jump.wav" id="8_8erm5"]
+[ext_resource type="Texture2D" uid="uid://baec5ohkn01fa" path="res://Assets/MainMenuButton_Pressed.png" id="8_gymyn"]
+[ext_resource type="Texture2D" uid="uid://b23lsisls12ds" path="res://Assets/MainMenuButton_Hover.png" id="9_pu2lt"]
+[ext_resource type="AudioStream" uid="uid://bmgabsm4pejl4" path="res://Sounds/Item.wav" id="11_gymyn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjndj"]
 radius = 6.0
@@ -53,19 +57,19 @@ atlas = ExtResource("2_vgqql")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("4_fkybt")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("4_fkybt")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igrcy"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("4_fkybt")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs7ks"]
-atlas = ExtResource("2_cvnsp")
+atlas = ExtResource("4_fkybt")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6n3p"]
@@ -157,14 +161,18 @@ radius = 4.0
 [node name="player" type="CharacterBody2D" unique_id=1973542359]
 script = ExtResource("1_cvnsp")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1227734870]
+position = Vector2(0, -45)
+limit_left = 0
+limit_top = 60
+limit_smoothed = true
+
 [node name="collision box" type="CollisionShape2D" parent="." unique_id=811313710]
 shape = SubResource("CapsuleShape2D_bjndj")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1855549867]
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=690027247]
 sprite_frames = SubResource("SpriteFrames_opoq5")
-animation = &"falling"
+animation = &"run"
 
 [node name="damage" type="Area2D" parent="." unique_id=357773756]
 collision_layer = 0
@@ -198,6 +206,30 @@ max_value = 5.0
 value = 5.0
 texture_progress = ExtResource("5_fkybt")
 
+[node name="MainMenu" type="TextureButton" parent="CanvasLayer/Control" unique_id=1316139946]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.0
+offset_right = 35.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("7_tx1dd")
+texture_pressed = ExtResource("8_gymyn")
+texture_hover = ExtResource("9_pu2lt")
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=1236729872]
+stream = ExtResource("8_8erm5")
+pitch_scale = 0.85
+autoplay = true
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1184474928]
+stream = ExtResource("11_gymyn")
+pitch_scale = 1.25
+
 [connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
 [connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]
 [connection signal="timeout" from="flickering" to="." method="_on_flickering_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/MainMenu" to="." method="_on_main_menu_pressed"]

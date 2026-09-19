@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://c40fmvlkmdrtq"]
+
+[ext_resource type="Script" uid="uid://dpnxlmnab1vh4" path="res://Scripts/credits.gd" id="1_ccovl"]
+[ext_resource type="Texture2D" uid="uid://pccrtbgr8n8b" path="res://Assets/Credits Bg.png" id="1_r18jl"]
+[ext_resource type="Script" uid="uid://btqup3t4e1hp4" path="res://Scripts/scroll_credits.gd" id="3_1bamb"]
+[ext_resource type="Texture2D" uid="uid://bn5ljxfprre4i" path="res://Assets/MainMenuButton.png" id="4_uah1q"]
+[ext_resource type="Texture2D" uid="uid://baec5ohkn01fa" path="res://Assets/MainMenuButton_Pressed.png" id="5_7emq5"]
+[ext_resource type="Texture2D" uid="uid://b23lsisls12ds" path="res://Assets/MainMenuButton_Hover.png" id="6_803yc"]
+[ext_resource type="AudioStream" uid="uid://c8vrr58lfxclu" path="res://Sounds/Credits.wav" id="7_7emq5"]
+[ext_resource type="AudioStream" uid="uid://bmgabsm4pejl4" path="res://Sounds/Item.wav" id="8_803yc"]
+
+[node name="Credits" type="Control" unique_id=60884130]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccovl")
+
+[node name="CreditsBg" type="Sprite2D" parent="." unique_id=53293738]
+position = Vector2(80, 91)
+texture = ExtResource("1_r18jl")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1178720853]
+position = Vector2(80, 71)
+limit_bottom = 182
+script = ExtResource("3_1bamb")
+
+[node name="Main_Menu" type="TextureButton" parent="." unique_id=437524108]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.179
+anchor_bottom = 0.21300001
+offset_left = 137.0
+offset_top = 160.0
+offset_right = 148.36
+offset_bottom = 169.328
+texture_normal = ExtResource("4_uah1q")
+texture_pressed = ExtResource("5_7emq5")
+texture_hover = ExtResource("6_803yc")
+
+[node name="Bg_sound" type="AudioStreamPlayer" parent="." unique_id=1416313458]
+stream = ExtResource("7_7emq5")
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1583624459]
+stream = ExtResource("8_803yc")
+pitch_scale = 1.25
+
+[connection signal="pressed" from="Main_Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="finished" from="Bg_sound" to="." method="_on_bg_sound_finished"]
