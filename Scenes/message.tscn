@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bjdfjgjknisp4"]
+
+[ext_resource type="FontFile" uid="uid://c2317qhkpsdq0" path="res://Fonts/TinyUnicode.ttf" id="1_s48se"]
+[ext_resource type="Script" uid="uid://cyh7t1c5q6t24" path="res://Scripts/message.gd" id="2_naogf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5mes4"]
+line_spacing = 0.0
+font = ExtResource("1_s48se")
+
+[node name="message" type="Control" unique_id=1666041083]
+custom_minimum_size = Vector2(150, 500)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_naogf")
+
+[node name="message" type="Label" parent="." unique_id=432958942]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "this message is like temp 2, 'cuz you can't see it"
+label_settings = SubResource("LabelSettings_5mes4")
+autowrap_mode = 3
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="restart" type="Timer" parent="message" unique_id=1448701521]
+wait_time = 0.001
+one_shot = true
+
+[connection signal="timeout" from="message/restart" to="." method="_on_restart_timeout"]

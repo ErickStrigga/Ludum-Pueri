@@ -17,7 +17,8 @@ func _process(delta: float) -> void:
 func _on_start_pressed() -> void:
 	click_sound.play()
 	await  get_tree().create_timer(0.3).timeout
-	get_tree().change_scene_to_file("res://Scenes/level 0 (test).tscn")
+	get_tree().change_scene_to_file("res://Scenes/home.tscn")
+
 
 
 func _on_credits_pressed() -> void:

@@ -229,6 +229,14 @@ autoplay = true
 stream = ExtResource("11_gymyn")
 pitch_scale = 1.25
 
+[node name="raycasts" type="Node2D" parent="." unique_id=1539105942]
+
+[node name="interaction" type="RayCast2D" parent="raycasts" unique_id=1158380997]
+target_position = Vector2(20, 0)
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false
+
 [connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
 [connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]
 [connection signal="timeout" from="flickering" to="." method="_on_flickering_timeout"]

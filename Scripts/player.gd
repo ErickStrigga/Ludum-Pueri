@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var flickering_timer = $flickering #para el efecto de parpadeo de la invencibilidad
 @onready var healthbar = $CanvasLayer/Control/health
 @onready var click_sound = $Click
+@onready var interaction = $raycasts/interaction
+@onready var raycasts = $raycasts
 
 var state = "stand"
 const SPEED = 150
@@ -21,6 +23,7 @@ var invincible : bool = false
 
 func _physics_process(delta: float) -> void:
 	
+	_manage_ab()
 	animation.play(state)
 	
 	
@@ -41,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("ui_left", "ui_right")
 		if direction:
 			velocity.x = direction * SPEED
-			
+			raycasts.scale.x = direction
 			
 			
 			#animation and look direction
@@ -98,3 +101,9 @@ func _on_main_menu_pressed() -> void:
 	click_sound.play()
 	await  get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+
+func _manage_ab():
+	
+	#la capa de interaccion es la 4
+	if Input.is_action_just_pressed("A") and interaction.is_colliding():
+		interaction.get_collider().get_parent()._interact()
